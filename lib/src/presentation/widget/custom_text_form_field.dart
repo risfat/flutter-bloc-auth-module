@@ -186,15 +186,17 @@ class CustomTextFormField extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: theme.textTheme.bodyMedium
-              ?.copyWith(fontWeight: FontWeight.w300, color: Colors.grey),
+              ?.copyWith(fontWeight: FontWeight.normal, color: Colors.grey),
           labelText: labelText,
-          labelStyle: theme.textTheme.displayMedium,
+          labelStyle:
+              theme.textTheme.displaySmall?.copyWith(color: Colors.grey),
           suffixIcon: suffixIcon,
           prefixIcon: prefixIcon,
           helperMaxLines: helperMaxLines,
           helperText: helperText,
           helperStyle: theme.textTheme.bodyMedium?.copyWith(fontSize: 10),
-          contentPadding: const EdgeInsets.symmetric(horizontal: SPACE12),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: SPACE12, vertical: 18),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(RADIUS),
             borderSide: BorderSide(color: theme.disabledColor),

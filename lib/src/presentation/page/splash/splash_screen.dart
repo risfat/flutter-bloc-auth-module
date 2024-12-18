@@ -57,18 +57,15 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Image.asset(
-                  "assets/images/logo.png",
-                  fit: BoxFit.contain,
-                )
-                    .animate()
-                    .fade(duration: 500.ms)
-                    .scale(delay: 500.ms, duration: 700.ms)
-                    .then(delay: 300.ms)
-                    .shimmer(duration: 1000.ms, color: Colors.white),
-              ),
+              Image.asset(
+                "assets/images/logo.png",
+                fit: BoxFit.contain,
+              )
+                  .animate()
+                  .fade(duration: 500.ms)
+                  .scale(delay: 500.ms, duration: 700.ms)
+                  .then(delay: 300.ms)
+                  .shimmer(duration: 1000.ms, color: Colors.white),
               // const SizedBox(height: 10),
               Text(
                 'Lorem ipsum dolor sit ame',
@@ -78,7 +75,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   .fadeIn(delay: 1200.ms, duration: 500.ms)
                   .then(delay: 200.ms)
                   .slideY(begin: 0.2, end: 0),
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
               const CircularProgressIndicator()
                   .animate()
                   .fadeIn(delay: 1700.ms, duration: 500.ms),

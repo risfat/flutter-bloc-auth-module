@@ -72,7 +72,7 @@ GoRouter routerinit = GoRouter(
         path: AppRoutes.DASHBOARD_ROUTE_PATH,
         pageBuilder: (context, state) => CustomTransitionPage<void>(
               key: state.pageKey,
-              child: const DashBoardScreen(),
+              child: const DashboardScreen(),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
                 return CustomTransitions.fadeSlideTransition(

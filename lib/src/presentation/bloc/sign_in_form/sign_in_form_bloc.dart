@@ -20,6 +20,9 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     on<_SendOtp>(_onSendOtp);
     on<_VerifyOtp>(_onVerifyOtp);
     on<_SignUpWithEmail>(_onSignUpWithEmail);
+    on<_ResetStateError>((event, emit) {
+      emit(state.copyWith(state: RequestState.empty, message: ""));
+    });
   }
 
   final Auth _auth;

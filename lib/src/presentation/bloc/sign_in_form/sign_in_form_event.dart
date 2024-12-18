@@ -22,4 +22,5 @@ class SignInFormEvent with _$SignInFormEvent {
   ) = _PhoneNumberOnChanged;
   const factory SignInFormEvent.userNameOnChanged(String name) =
       _UserNameOnChanged;
+  const factory SignInFormEvent.resetStateError() = _ResetStateError;
 }

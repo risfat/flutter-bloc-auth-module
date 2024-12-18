@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../common/colors.dart';
 import '../../../common/enums.dart';
+import '../../../common/images.dart';
 import '../../../common/routes.dart';
 import '../../bloc/sign_in_form/sign_in_form_bloc.dart';
 import '../../widget/account_not_found_dialog.dart';
@@ -12,6 +14,12 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Reset the state when the screen is built
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context
+          .read<SignInFormBloc>()
+          .add(const SignInFormEvent.resetStateError());
+    });
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (context, state) {
         if (state.state == RequestState.error) {
@@ -141,9 +149,7 @@ class _LoginFormState extends State<_LoginForm> with TickerProviderStateMixin {
         );
       },
       child: Image.asset(
-        !_showPasswordField
-            ? 'assets/images/login_illustration.png'
-            : 'assets/images/password_reset.png',
+        !_showPasswordField ? Images.LOGIN_ILLUSTRATION : Images.PASSWORD_RESET,
         key: ValueKey<bool>(_showPasswordField),
         height: 300,
       ),
@@ -287,7 +293,7 @@ class _LoginFormState extends State<_LoginForm> with TickerProviderStateMixin {
         height: 50,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.purple,
+            backgroundColor: ColorLight.primary,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),
             ),
@@ -344,14 +350,14 @@ class _LoginFormState extends State<_LoginForm> with TickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildSocialLoginButton(
-                'assets/images/google_icon.png',
+                Images.GOOGLE_ICON,
                 () => context
                     .read<SignInFormBloc>()
                     .add(const SignInFormEvent.signInWithGoogle()),
               ),
               const SizedBox(width: 20),
               _buildSocialLoginButton(
-                'assets/images/apple_icon.png',
+                Images.APPLE_ICON,
                 () => context
                     .read<SignInFormBloc>()
                     .add(const SignInFormEvent.signInWithApple()),
@@ -365,7 +371,7 @@ class _LoginFormState extends State<_LoginForm> with TickerProviderStateMixin {
 
   Widget _buildSocialLoginButton(String assetPath, VoidCallback onPressed) {
     return IconButton(
-      onPressed: onPressed,
+      onPressed: null,
       icon: Image.asset(
         assetPath,
         height: 30,

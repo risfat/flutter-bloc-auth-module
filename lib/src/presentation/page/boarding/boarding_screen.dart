@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../common/colors.dart';
+import '../../../common/images.dart';
 import '../../../common/routes.dart';
 
 class BoardingScreen extends StatelessWidget {
@@ -40,7 +41,7 @@ class _HeaderSection extends StatelessWidget {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
-                  'assets/images/header_background.png'), // Add your background image here
+                  Images.HEADER_BG), // Add your background image here
               fit: BoxFit.cover,
             ),
           ),

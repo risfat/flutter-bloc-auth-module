@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/phone_number.dart';
 
+import '../../../common/colors.dart';
 import '../../../common/enums.dart';
 import '../../bloc/sign_in_form/sign_in_form_bloc.dart';
 import '../../widget/custom_text_form_field.dart';
@@ -38,15 +39,18 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
   Widget build(BuildContext context) {
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (context, state) {
-        _emailController.text = state.email;
         if (state.state == RequestState.error) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.message)),
           );
         } else if (state.state == RequestState.loaded &&
             state.isSignupCompleted) {
-          context.pushReplacement(AppRoutes.DASHBOARD_ROUTE_NAME);
+          context.replaceNamed(AppRoutes.DASHBOARD_ROUTE_NAME);
         }
+
+        setState(() {
+          _emailController.text = state.email;
+        });
       },
       builder: (context, state) {
         return Scaffold(
@@ -84,15 +88,15 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
                     ),
                     const SizedBox(height: 20),
                     _buildNameField(),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 2),
                     _buildEmailField(),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 10),
                     _buildPhoneField(),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 2),
                     _buildPasswordField(),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 2),
                     _buildConfirmPasswordField(),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 20),
                     if (state.state == RequestState.error) ...[
                       Center(
                         child: Padding(
@@ -147,8 +151,17 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
       controller: _phoneController,
       decoration: InputDecoration(
         labelText: 'Phone Number',
+        labelStyle: Theme.of(context)
+            .textTheme
+            .displaySmall
+            ?.copyWith(color: Colors.grey),
+        prefixStyle: Theme.of(context)
+            .textTheme
+            .displaySmall
+            ?.copyWith(color: Colors.grey),
         border: OutlineInputBorder(
           borderSide: BorderSide(),
+          borderRadius: BorderRadius.circular(20.0),
         ),
       ),
       initialCountryCode: 'AE',
@@ -203,7 +216,7 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF9C004D),
+          backgroundColor: ColorLight.primary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),

@@ -30,6 +30,7 @@ mixin _$SignInFormEvent {
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String number) phoneNumberOnChanged,
     required TResult Function(String name) userNameOnChanged,
+    required TResult Function() resetStateError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +47,7 @@ mixin _$SignInFormEvent {
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String number)? phoneNumberOnChanged,
     TResult? Function(String name)? userNameOnChanged,
+    TResult? Function()? resetStateError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +64,7 @@ mixin _$SignInFormEvent {
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String number)? phoneNumberOnChanged,
     TResult Function(String name)? userNameOnChanged,
+    TResult Function()? resetStateError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,6 +81,7 @@ mixin _$SignInFormEvent {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_UserNameOnChanged value) userNameOnChanged,
+    required TResult Function(_ResetStateError value) resetStateError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,6 +97,7 @@ mixin _$SignInFormEvent {
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult? Function(_ResetStateError value)? resetStateError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -108,6 +113,7 @@ mixin _$SignInFormEvent {
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult Function(_ResetStateError value)? resetStateError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -187,6 +193,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String number) phoneNumberOnChanged,
     required TResult Function(String name) userNameOnChanged,
+    required TResult Function() resetStateError,
   }) {
     return initial();
   }
@@ -206,6 +213,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String number)? phoneNumberOnChanged,
     TResult? Function(String name)? userNameOnChanged,
+    TResult? Function()? resetStateError,
   }) {
     return initial?.call();
   }
@@ -225,6 +233,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String number)? phoneNumberOnChanged,
     TResult Function(String name)? userNameOnChanged,
+    TResult Function()? resetStateError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -247,6 +256,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_UserNameOnChanged value) userNameOnChanged,
+    required TResult Function(_ResetStateError value) resetStateError,
   }) {
     return initial(this);
   }
@@ -265,6 +275,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult? Function(_ResetStateError value)? resetStateError,
   }) {
     return initial?.call(this);
   }
@@ -283,6 +294,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult Function(_ResetStateError value)? resetStateError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -349,6 +361,7 @@ class _$SignInWithEmailImpl implements _SignInWithEmail {
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String number) phoneNumberOnChanged,
     required TResult Function(String name) userNameOnChanged,
+    required TResult Function() resetStateError,
   }) {
     return signInWithEmail();
   }
@@ -368,6 +381,7 @@ class _$SignInWithEmailImpl implements _SignInWithEmail {
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String number)? phoneNumberOnChanged,
     TResult? Function(String name)? userNameOnChanged,
+    TResult? Function()? resetStateError,
   }) {
     return signInWithEmail?.call();
   }
@@ -387,6 +401,7 @@ class _$SignInWithEmailImpl implements _SignInWithEmail {
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String number)? phoneNumberOnChanged,
     TResult Function(String name)? userNameOnChanged,
+    TResult Function()? resetStateError,
     required TResult orElse(),
   }) {
     if (signInWithEmail != null) {
@@ -409,6 +424,7 @@ class _$SignInWithEmailImpl implements _SignInWithEmail {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_UserNameOnChanged value) userNameOnChanged,
+    required TResult Function(_ResetStateError value) resetStateError,
   }) {
     return signInWithEmail(this);
   }
@@ -427,6 +443,7 @@ class _$SignInWithEmailImpl implements _SignInWithEmail {
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult? Function(_ResetStateError value)? resetStateError,
   }) {
     return signInWithEmail?.call(this);
   }
@@ -445,6 +462,7 @@ class _$SignInWithEmailImpl implements _SignInWithEmail {
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult Function(_ResetStateError value)? resetStateError,
     required TResult orElse(),
   }) {
     if (signInWithEmail != null) {
@@ -511,6 +529,7 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String number) phoneNumberOnChanged,
     required TResult Function(String name) userNameOnChanged,
+    required TResult Function() resetStateError,
   }) {
     return signInWithGoogle();
   }
@@ -530,6 +549,7 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String number)? phoneNumberOnChanged,
     TResult? Function(String name)? userNameOnChanged,
+    TResult? Function()? resetStateError,
   }) {
     return signInWithGoogle?.call();
   }
@@ -549,6 +569,7 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String number)? phoneNumberOnChanged,
     TResult Function(String name)? userNameOnChanged,
+    TResult Function()? resetStateError,
     required TResult orElse(),
   }) {
     if (signInWithGoogle != null) {
@@ -571,6 +592,7 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_UserNameOnChanged value) userNameOnChanged,
+    required TResult Function(_ResetStateError value) resetStateError,
   }) {
     return signInWithGoogle(this);
   }
@@ -589,6 +611,7 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult? Function(_ResetStateError value)? resetStateError,
   }) {
     return signInWithGoogle?.call(this);
   }
@@ -607,6 +630,7 @@ class _$SignInWithGoogleImpl implements _SignInWithGoogle {
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult Function(_ResetStateError value)? resetStateError,
     required TResult orElse(),
   }) {
     if (signInWithGoogle != null) {
@@ -673,6 +697,7 @@ class _$SignInWithAppleImpl implements _SignInWithApple {
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String number) phoneNumberOnChanged,
     required TResult Function(String name) userNameOnChanged,
+    required TResult Function() resetStateError,
   }) {
     return signInWithApple();
   }
@@ -692,6 +717,7 @@ class _$SignInWithAppleImpl implements _SignInWithApple {
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String number)? phoneNumberOnChanged,
     TResult? Function(String name)? userNameOnChanged,
+    TResult? Function()? resetStateError,
   }) {
     return signInWithApple?.call();
   }
@@ -711,6 +737,7 @@ class _$SignInWithAppleImpl implements _SignInWithApple {
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String number)? phoneNumberOnChanged,
     TResult Function(String name)? userNameOnChanged,
+    TResult Function()? resetStateError,
     required TResult orElse(),
   }) {
     if (signInWithApple != null) {
@@ -733,6 +760,7 @@ class _$SignInWithAppleImpl implements _SignInWithApple {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_UserNameOnChanged value) userNameOnChanged,
+    required TResult Function(_ResetStateError value) resetStateError,
   }) {
     return signInWithApple(this);
   }
@@ -751,6 +779,7 @@ class _$SignInWithAppleImpl implements _SignInWithApple {
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult? Function(_ResetStateError value)? resetStateError,
   }) {
     return signInWithApple?.call(this);
   }
@@ -769,6 +798,7 @@ class _$SignInWithAppleImpl implements _SignInWithApple {
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult Function(_ResetStateError value)? resetStateError,
     required TResult orElse(),
   }) {
     if (signInWithApple != null) {
@@ -835,6 +865,7 @@ class _$SendOtpImpl implements _SendOtp {
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String number) phoneNumberOnChanged,
     required TResult Function(String name) userNameOnChanged,
+    required TResult Function() resetStateError,
   }) {
     return sendOtp();
   }
@@ -854,6 +885,7 @@ class _$SendOtpImpl implements _SendOtp {
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String number)? phoneNumberOnChanged,
     TResult? Function(String name)? userNameOnChanged,
+    TResult? Function()? resetStateError,
   }) {
     return sendOtp?.call();
   }
@@ -873,6 +905,7 @@ class _$SendOtpImpl implements _SendOtp {
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String number)? phoneNumberOnChanged,
     TResult Function(String name)? userNameOnChanged,
+    TResult Function()? resetStateError,
     required TResult orElse(),
   }) {
     if (sendOtp != null) {
@@ -895,6 +928,7 @@ class _$SendOtpImpl implements _SendOtp {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_UserNameOnChanged value) userNameOnChanged,
+    required TResult Function(_ResetStateError value) resetStateError,
   }) {
     return sendOtp(this);
   }
@@ -913,6 +947,7 @@ class _$SendOtpImpl implements _SendOtp {
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult? Function(_ResetStateError value)? resetStateError,
   }) {
     return sendOtp?.call(this);
   }
@@ -931,6 +966,7 @@ class _$SendOtpImpl implements _SendOtp {
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult Function(_ResetStateError value)? resetStateError,
     required TResult orElse(),
   }) {
     if (sendOtp != null) {
@@ -1024,6 +1060,7 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String number) phoneNumberOnChanged,
     required TResult Function(String name) userNameOnChanged,
+    required TResult Function() resetStateError,
   }) {
     return verifyOtp(otp);
   }
@@ -1043,6 +1080,7 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String number)? phoneNumberOnChanged,
     TResult? Function(String name)? userNameOnChanged,
+    TResult? Function()? resetStateError,
   }) {
     return verifyOtp?.call(otp);
   }
@@ -1062,6 +1100,7 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String number)? phoneNumberOnChanged,
     TResult Function(String name)? userNameOnChanged,
+    TResult Function()? resetStateError,
     required TResult orElse(),
   }) {
     if (verifyOtp != null) {
@@ -1084,6 +1123,7 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_UserNameOnChanged value) userNameOnChanged,
+    required TResult Function(_ResetStateError value) resetStateError,
   }) {
     return verifyOtp(this);
   }
@@ -1102,6 +1142,7 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult? Function(_ResetStateError value)? resetStateError,
   }) {
     return verifyOtp?.call(this);
   }
@@ -1120,6 +1161,7 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult Function(_ResetStateError value)? resetStateError,
     required TResult orElse(),
   }) {
     if (verifyOtp != null) {
@@ -1240,6 +1282,7 @@ class _$SignUpWithEmailImpl implements _SignUpWithEmail {
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String number) phoneNumberOnChanged,
     required TResult Function(String name) userNameOnChanged,
+    required TResult Function() resetStateError,
   }) {
     return signUpWithEmail(firstName, lastName, mobile);
   }
@@ -1259,6 +1302,7 @@ class _$SignUpWithEmailImpl implements _SignUpWithEmail {
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String number)? phoneNumberOnChanged,
     TResult? Function(String name)? userNameOnChanged,
+    TResult? Function()? resetStateError,
   }) {
     return signUpWithEmail?.call(firstName, lastName, mobile);
   }
@@ -1278,6 +1322,7 @@ class _$SignUpWithEmailImpl implements _SignUpWithEmail {
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String number)? phoneNumberOnChanged,
     TResult Function(String name)? userNameOnChanged,
+    TResult Function()? resetStateError,
     required TResult orElse(),
   }) {
     if (signUpWithEmail != null) {
@@ -1300,6 +1345,7 @@ class _$SignUpWithEmailImpl implements _SignUpWithEmail {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_UserNameOnChanged value) userNameOnChanged,
+    required TResult Function(_ResetStateError value) resetStateError,
   }) {
     return signUpWithEmail(this);
   }
@@ -1318,6 +1364,7 @@ class _$SignUpWithEmailImpl implements _SignUpWithEmail {
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult? Function(_ResetStateError value)? resetStateError,
   }) {
     return signUpWithEmail?.call(this);
   }
@@ -1336,6 +1383,7 @@ class _$SignUpWithEmailImpl implements _SignUpWithEmail {
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult Function(_ResetStateError value)? resetStateError,
     required TResult orElse(),
   }) {
     if (signUpWithEmail != null) {
@@ -1442,6 +1490,7 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String number) phoneNumberOnChanged,
     required TResult Function(String name) userNameOnChanged,
+    required TResult Function() resetStateError,
   }) {
     return emailOnChanged(email);
   }
@@ -1461,6 +1510,7 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String number)? phoneNumberOnChanged,
     TResult? Function(String name)? userNameOnChanged,
+    TResult? Function()? resetStateError,
   }) {
     return emailOnChanged?.call(email);
   }
@@ -1480,6 +1530,7 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String number)? phoneNumberOnChanged,
     TResult Function(String name)? userNameOnChanged,
+    TResult Function()? resetStateError,
     required TResult orElse(),
   }) {
     if (emailOnChanged != null) {
@@ -1502,6 +1553,7 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_UserNameOnChanged value) userNameOnChanged,
+    required TResult Function(_ResetStateError value) resetStateError,
   }) {
     return emailOnChanged(this);
   }
@@ -1520,6 +1572,7 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult? Function(_ResetStateError value)? resetStateError,
   }) {
     return emailOnChanged?.call(this);
   }
@@ -1538,6 +1591,7 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult Function(_ResetStateError value)? resetStateError,
     required TResult orElse(),
   }) {
     if (emailOnChanged != null) {
@@ -1641,6 +1695,7 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String number) phoneNumberOnChanged,
     required TResult Function(String name) userNameOnChanged,
+    required TResult Function() resetStateError,
   }) {
     return passwordOnChanged(password);
   }
@@ -1660,6 +1715,7 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String number)? phoneNumberOnChanged,
     TResult? Function(String name)? userNameOnChanged,
+    TResult? Function()? resetStateError,
   }) {
     return passwordOnChanged?.call(password);
   }
@@ -1679,6 +1735,7 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String number)? phoneNumberOnChanged,
     TResult Function(String name)? userNameOnChanged,
+    TResult Function()? resetStateError,
     required TResult orElse(),
   }) {
     if (passwordOnChanged != null) {
@@ -1701,6 +1758,7 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_UserNameOnChanged value) userNameOnChanged,
+    required TResult Function(_ResetStateError value) resetStateError,
   }) {
     return passwordOnChanged(this);
   }
@@ -1719,6 +1777,7 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult? Function(_ResetStateError value)? resetStateError,
   }) {
     return passwordOnChanged?.call(this);
   }
@@ -1737,6 +1796,7 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult Function(_ResetStateError value)? resetStateError,
     required TResult orElse(),
   }) {
     if (passwordOnChanged != null) {
@@ -1841,6 +1901,7 @@ class _$PhoneNumberOnChangedImpl implements _PhoneNumberOnChanged {
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String number) phoneNumberOnChanged,
     required TResult Function(String name) userNameOnChanged,
+    required TResult Function() resetStateError,
   }) {
     return phoneNumberOnChanged(number);
   }
@@ -1860,6 +1921,7 @@ class _$PhoneNumberOnChangedImpl implements _PhoneNumberOnChanged {
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String number)? phoneNumberOnChanged,
     TResult? Function(String name)? userNameOnChanged,
+    TResult? Function()? resetStateError,
   }) {
     return phoneNumberOnChanged?.call(number);
   }
@@ -1879,6 +1941,7 @@ class _$PhoneNumberOnChangedImpl implements _PhoneNumberOnChanged {
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String number)? phoneNumberOnChanged,
     TResult Function(String name)? userNameOnChanged,
+    TResult Function()? resetStateError,
     required TResult orElse(),
   }) {
     if (phoneNumberOnChanged != null) {
@@ -1901,6 +1964,7 @@ class _$PhoneNumberOnChangedImpl implements _PhoneNumberOnChanged {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_UserNameOnChanged value) userNameOnChanged,
+    required TResult Function(_ResetStateError value) resetStateError,
   }) {
     return phoneNumberOnChanged(this);
   }
@@ -1919,6 +1983,7 @@ class _$PhoneNumberOnChangedImpl implements _PhoneNumberOnChanged {
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult? Function(_ResetStateError value)? resetStateError,
   }) {
     return phoneNumberOnChanged?.call(this);
   }
@@ -1937,6 +2002,7 @@ class _$PhoneNumberOnChangedImpl implements _PhoneNumberOnChanged {
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult Function(_ResetStateError value)? resetStateError,
     required TResult orElse(),
   }) {
     if (phoneNumberOnChanged != null) {
@@ -2040,6 +2106,7 @@ class _$UserNameOnChangedImpl implements _UserNameOnChanged {
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String number) phoneNumberOnChanged,
     required TResult Function(String name) userNameOnChanged,
+    required TResult Function() resetStateError,
   }) {
     return userNameOnChanged(name);
   }
@@ -2059,6 +2126,7 @@ class _$UserNameOnChangedImpl implements _UserNameOnChanged {
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String number)? phoneNumberOnChanged,
     TResult? Function(String name)? userNameOnChanged,
+    TResult? Function()? resetStateError,
   }) {
     return userNameOnChanged?.call(name);
   }
@@ -2078,6 +2146,7 @@ class _$UserNameOnChangedImpl implements _UserNameOnChanged {
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String number)? phoneNumberOnChanged,
     TResult Function(String name)? userNameOnChanged,
+    TResult Function()? resetStateError,
     required TResult orElse(),
   }) {
     if (userNameOnChanged != null) {
@@ -2100,6 +2169,7 @@ class _$UserNameOnChangedImpl implements _UserNameOnChanged {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
     required TResult Function(_UserNameOnChanged value) userNameOnChanged,
+    required TResult Function(_ResetStateError value) resetStateError,
   }) {
     return userNameOnChanged(this);
   }
@@ -2118,6 +2188,7 @@ class _$UserNameOnChangedImpl implements _UserNameOnChanged {
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult? Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult? Function(_ResetStateError value)? resetStateError,
   }) {
     return userNameOnChanged?.call(this);
   }
@@ -2136,6 +2207,7 @@ class _$UserNameOnChangedImpl implements _UserNameOnChanged {
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
     TResult Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult Function(_ResetStateError value)? resetStateError,
     required TResult orElse(),
   }) {
     if (userNameOnChanged != null) {
@@ -2155,6 +2227,174 @@ abstract class _UserNameOnChanged implements SignInFormEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserNameOnChangedImplCopyWith<_$UserNameOnChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ResetStateErrorImplCopyWith<$Res> {
+  factory _$$ResetStateErrorImplCopyWith(_$ResetStateErrorImpl value,
+          $Res Function(_$ResetStateErrorImpl) then) =
+      __$$ResetStateErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetStateErrorImplCopyWithImpl<$Res>
+    extends _$SignInFormEventCopyWithImpl<$Res, _$ResetStateErrorImpl>
+    implements _$$ResetStateErrorImplCopyWith<$Res> {
+  __$$ResetStateErrorImplCopyWithImpl(
+      _$ResetStateErrorImpl _value, $Res Function(_$ResetStateErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SignInFormEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ResetStateErrorImpl implements _ResetStateError {
+  const _$ResetStateErrorImpl();
+
+  @override
+  String toString() {
+    return 'SignInFormEvent.resetStateError()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetStateErrorImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() signInWithEmail,
+    required TResult Function() signInWithGoogle,
+    required TResult Function() signInWithApple,
+    required TResult Function() sendOtp,
+    required TResult Function(String otp) verifyOtp,
+    required TResult Function(String firstName, String lastName, String mobile)
+        signUpWithEmail,
+    required TResult Function(String email) emailOnChanged,
+    required TResult Function(String password) passwordOnChanged,
+    required TResult Function(String number) phoneNumberOnChanged,
+    required TResult Function(String name) userNameOnChanged,
+    required TResult Function() resetStateError,
+  }) {
+    return resetStateError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? signInWithEmail,
+    TResult? Function()? signInWithGoogle,
+    TResult? Function()? signInWithApple,
+    TResult? Function()? sendOtp,
+    TResult? Function(String otp)? verifyOtp,
+    TResult? Function(String firstName, String lastName, String mobile)?
+        signUpWithEmail,
+    TResult? Function(String email)? emailOnChanged,
+    TResult? Function(String password)? passwordOnChanged,
+    TResult? Function(String number)? phoneNumberOnChanged,
+    TResult? Function(String name)? userNameOnChanged,
+    TResult? Function()? resetStateError,
+  }) {
+    return resetStateError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? signInWithEmail,
+    TResult Function()? signInWithGoogle,
+    TResult Function()? signInWithApple,
+    TResult Function()? sendOtp,
+    TResult Function(String otp)? verifyOtp,
+    TResult Function(String firstName, String lastName, String mobile)?
+        signUpWithEmail,
+    TResult Function(String email)? emailOnChanged,
+    TResult Function(String password)? passwordOnChanged,
+    TResult Function(String number)? phoneNumberOnChanged,
+    TResult Function(String name)? userNameOnChanged,
+    TResult Function()? resetStateError,
+    required TResult orElse(),
+  }) {
+    if (resetStateError != null) {
+      return resetStateError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_SignInWithEmail value) signInWithEmail,
+    required TResult Function(_SignInWithGoogle value) signInWithGoogle,
+    required TResult Function(_SignInWithApple value) signInWithApple,
+    required TResult Function(_SendOtp value) sendOtp,
+    required TResult Function(_VerifyOtp value) verifyOtp,
+    required TResult Function(_SignUpWithEmail value) signUpWithEmail,
+    required TResult Function(_EmailOnChanged value) emailOnChanged,
+    required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_PhoneNumberOnChanged value) phoneNumberOnChanged,
+    required TResult Function(_UserNameOnChanged value) userNameOnChanged,
+    required TResult Function(_ResetStateError value) resetStateError,
+  }) {
+    return resetStateError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_SignInWithEmail value)? signInWithEmail,
+    TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult? Function(_SignInWithApple value)? signInWithApple,
+    TResult? Function(_SendOtp value)? sendOtp,
+    TResult? Function(_VerifyOtp value)? verifyOtp,
+    TResult? Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult? Function(_EmailOnChanged value)? emailOnChanged,
+    TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
+    TResult? Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult? Function(_ResetStateError value)? resetStateError,
+  }) {
+    return resetStateError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_SignInWithEmail value)? signInWithEmail,
+    TResult Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult Function(_SignInWithApple value)? signInWithApple,
+    TResult Function(_SendOtp value)? sendOtp,
+    TResult Function(_VerifyOtp value)? verifyOtp,
+    TResult Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult Function(_EmailOnChanged value)? emailOnChanged,
+    TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_PhoneNumberOnChanged value)? phoneNumberOnChanged,
+    TResult Function(_UserNameOnChanged value)? userNameOnChanged,
+    TResult Function(_ResetStateError value)? resetStateError,
+    required TResult orElse(),
+  }) {
+    if (resetStateError != null) {
+      return resetStateError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResetStateError implements SignInFormEvent {
+  const factory _ResetStateError() = _$ResetStateErrorImpl;
 }
 
 /// @nodoc

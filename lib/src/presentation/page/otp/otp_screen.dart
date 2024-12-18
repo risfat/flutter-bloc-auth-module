@@ -9,6 +9,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../../common/enums.dart';
+import '../../../common/images.dart';
 import '../../bloc/sign_in_form/sign_in_form_bloc.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
@@ -116,8 +117,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
   Widget _buildImage() {
     return Image.asset(
-      'assets/images/otp.png',
-      height: 150,
+      Images.OTP,
+      height: 300,
     );
   }
 
@@ -168,8 +169,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
     final focusedPinTheme = defaultPinTheme.copyWith(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.pink),
-        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: ColorLight.primary),
+        borderRadius: BorderRadius.circular(30),
       ),
     );
 
@@ -204,7 +205,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
           child: Text(
             "Resend OTP",
             style: TextStyle(
-              color: _countdown == 0 ? Colors.pink : Colors.grey,
+              color: _countdown == 0 ? ColorLight.primary : Colors.grey,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -240,10 +241,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 }
               },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.pink,
+          backgroundColor: ColorLight.primary,
           padding: const EdgeInsets.symmetric(vertical: 15),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(30),
           ),
         ),
         child: state.state == RequestState.loading
