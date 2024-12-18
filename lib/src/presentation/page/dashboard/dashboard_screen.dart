@@ -1,20 +1,26 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../common/colors.dart';
+import '../../../common/images.dart';
 import '../../../common/routes.dart';
 import '../../bloc/authenticator_watcher/authenticator_watcher_bloc.dart';
 
-class DashBoardScreen extends StatelessWidget {
-  const DashBoardScreen({Key? key}) : super(key: key);
+class DashboardScreen extends StatelessWidget {
+  const DashboardScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          _buildAppBar(),
+          _buildAppBar(context),
+          SliverToBoxAdapter(child: _buildUserProfile(context)),
           SliverToBoxAdapter(child: _buildQuickActions(context)),
+          SliverToBoxAdapter(child: _buildChart()),
           SliverPadding(
             padding: const EdgeInsets.all(16.0),
             sliver: _buildRecentActivities(),
@@ -24,17 +30,57 @@ class DashBoardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAppBar() {
+  Widget _buildAppBar(BuildContext context) {
     return SliverAppBar(
-      automaticallyImplyLeading: false,
       expandedHeight: 200.0,
       floating: false,
-      pinned: false,
+      pinned: true,
+      backgroundColor: ColorLight.primary.withOpacity(0.05),
       flexibleSpace: FlexibleSpaceBar(
+        title: Text('Dashboard', style: TextStyle(color: Colors.white)),
         background: Image.asset(
-          'assets/images/header_background.png',
+          Images.HEADER_BG,
           fit: BoxFit.cover,
         ),
+      ),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.logout, color: Colors.white),
+          onPressed: () {
+            context.read<AuthenticatorWatcherBloc>().add(
+                  const AuthenticatorWatcherEvent.signOut(),
+                );
+            context.replaceNamed(AppRoutes.LOGIN_ROUTE_NAME);
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildUserProfile(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(16),
+      child: Row(
+        children: [
+          CircleAvatar(
+            radius: 30,
+            backgroundImage: AssetImage(Images.USER_AVATAR),
+          ),
+          SizedBox(width: 16),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Welcome, John Doe',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              Text(
+                'john.doe@example.com',
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -46,60 +92,95 @@ class DashBoardScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'Quick Actions',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              IconButton(
-                icon: Icon(Icons.logout),
-                onPressed: () {
-                  context.read<AuthenticatorWatcherBloc>().add(
-                        const AuthenticatorWatcherEvent.signOut(),
-                      );
-
-                  context.replaceNamed(AppRoutes.LOGIN_ROUTE_NAME);
-                },
-              ),
-            ],
+          Text(
+            'Quick Actions',
+            style: Theme.of(context).textTheme.titleLarge,
           ),
-          GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 3,
-            crossAxisSpacing: 5,
-            mainAxisSpacing: 5,
-            physics: const NeverScrollableScrollPhysics(),
-            children: [
-              _buildActionButton(Icons.person, 'Profile'),
-              _buildActionButton(Icons.settings, 'Settings'),
-              _buildActionButton(Icons.notifications, 'Notifications'),
-              _buildActionButton(Icons.favorite, 'Favorites'),
-              _buildActionButton(Icons.history, 'History'),
-              _buildActionButton(Icons.help, 'Help'),
-            ],
+          SizedBox(height: 16),
+          AnimationLimiter(
+            child: GridView.count(
+              shrinkWrap: true,
+              crossAxisCount: 3,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              physics: const NeverScrollableScrollPhysics(),
+              children: List.generate(
+                6,
+                (index) => AnimationConfiguration.staggeredGrid(
+                  position: index,
+                  duration: const Duration(milliseconds: 375),
+                  columnCount: 3,
+                  child: ScaleAnimation(
+                    child: FadeInAnimation(
+                      child: _buildActionButton(
+                        _getQuickActionIcon(index),
+                        _getQuickActionLabel(index),
+                        context,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildActionButton(IconData icon, String label) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: Colors.purple.shade100,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Icon(icon, size: 30, color: Colors.purple),
+  Widget _buildActionButton(IconData icon, String label, BuildContext context) {
+    return Material(
+      color: Theme.of(context).primaryColor.withOpacity(0.1),
+      borderRadius: BorderRadius.circular(8),
+      child: InkWell(
+        onTap: () {},
+        borderRadius: BorderRadius.circular(8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 32, color: Theme.of(context).primaryColor),
+            SizedBox(height: 8),
+            Text(label, style: Theme.of(context).textTheme.bodySmall),
+          ],
         ),
-        const SizedBox(height: 8),
-        Text(label, style: const TextStyle(fontSize: 12)),
-      ],
+      ),
+    );
+  }
+
+  Widget _buildChart() {
+    return Container(
+      height: 250,
+      padding: EdgeInsets.all(16),
+      child: LineChart(
+        LineChartData(
+          gridData: FlGridData(show: false),
+          titlesData: FlTitlesData(show: false),
+          borderData: FlBorderData(show: false),
+          minX: 0,
+          maxX: 7,
+          minY: 0,
+          maxY: 6,
+          lineBarsData: [
+            LineChartBarData(
+                spots: [
+                  FlSpot(0, 3),
+                  FlSpot(1, 1),
+                  FlSpot(2, 4),
+                  FlSpot(3, 2),
+                  FlSpot(4, 5),
+                  FlSpot(5, 1),
+                  FlSpot(6, 4),
+                  FlSpot(7, 5),
+                ],
+                isCurved: true,
+                color: Colors.blue,
+                barWidth: 3,
+                dotData: FlDotData(show: false),
+                belowBarData: BarAreaData(
+                    show: true, color: Colors.blue.withOpacity(0.3))),
+          ],
+        ),
+      ),
     );
   }
 
@@ -107,15 +188,73 @@ class DashBoardScreen extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          return ListTile(
-            leading: const CircleAvatar(child: Icon(Icons.event)),
-            title: Text('Activity ${index + 1}'),
-            subtitle: Text('Description for activity ${index + 1}'),
-            trailing: const Icon(Icons.arrow_forward_ios),
+          return AnimationConfiguration.staggeredList(
+            position: index,
+            duration: const Duration(milliseconds: 375),
+            child: SlideAnimation(
+              verticalOffset: 50.0,
+              child: FadeInAnimation(
+                child: ListTile(
+                  leading: CircleAvatar(child: Icon(_getActivityIcon(index))),
+                  title: Text('Activity ${index + 1}'),
+                  subtitle: Text('Description for activity ${index + 1}'),
+                  trailing: const Icon(Icons.arrow_forward_ios),
+                ),
+              ),
+            ),
           );
         },
-        childCount: 10,
+        childCount: 15,
       ),
     );
+  }
+
+  IconData _getQuickActionIcon(int index) {
+    switch (index) {
+      case 0:
+        return Icons.person;
+      case 1:
+        return Icons.settings;
+      case 2:
+        return Icons.notifications;
+      case 3:
+        return Icons.favorite;
+      case 4:
+        return Icons.history;
+      case 5:
+        return Icons.help;
+      default:
+        return Icons.star;
+    }
+  }
+
+  String _getQuickActionLabel(int index) {
+    switch (index) {
+      case 0:
+        return 'Profile';
+      case 1:
+        return 'Settings';
+      case 2:
+        return 'Notifications';
+      case 3:
+        return 'Favorites';
+      case 4:
+        return 'History';
+      case 5:
+        return 'Help';
+      default:
+        return 'Action';
+    }
+  }
+
+  IconData _getActivityIcon(int index) {
+    final icons = [
+      Icons.event,
+      Icons.shopping_cart,
+      Icons.favorite,
+      Icons.location_on,
+      Icons.message,
+    ];
+    return icons[index % icons.length];
   }
 }
