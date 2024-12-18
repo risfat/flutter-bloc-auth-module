@@ -1,6 +1,6 @@
 # Flutter Bloc Auth Module
 
-Loreum Ipsum
+This project is a Flutter application that implements an authentication module using the BLoC (Business Logic Component) pattern for state management.
 
 ## Project Structure
 
@@ -41,3 +41,29 @@ The project follows a well-defined directory structure to keep your code organiz
 - **Injection.dart**: Dependency injection setup using GetIt.
 
 - **Main.dart**: The entry point of the Flutter application.
+
+
+## Getting Started
+
+### Prerequisites
+
+- Flutter SDK (latest stable version)
+- Dart SDK (latest stable version)
+
+### Installation
+
+1. Clone the repository:
+
+   `git clone https://github.com/risfat/flutter-bloc-auth-module.git`
+
+2. Navigate to the project directory:
+
+   `cd flutter-bloc-auth-module`
+
+3. Get the dependencies:
+
+   `flutter pub get`
+
+4. Run the app:
+
+   `flutter run`
