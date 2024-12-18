@@ -9,4 +9,5 @@ class API {
   static const CHECK_USER_EXISTS = '$BASE_URL/Administrator/CheckUserExists';
   static const SEND_OTP_EMAIL = '$BASE_URL/Administrator/SendOTPToEmail';
   static const VERIFY_OTP_EMAIL = '$BASE_URL/Administrator/CheckOTPEmail';
+  static const REFRESH_TOKEN = '$BASE_URL/Administrator/RefreshToken';
 }

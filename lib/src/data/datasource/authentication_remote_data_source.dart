@@ -4,6 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../common/exceptions.dart';
+import '../../common/helpers.dart';
+import '../../common/token_service.dart';
 
 abstract class AuthenticationRemoteDataSource {
   Future<void> login(String email, String password);
@@ -16,7 +18,8 @@ abstract class AuthenticationRemoteDataSource {
 
 class AuthenticationRemoteDataSourceImpl
     implements AuthenticationRemoteDataSource {
-  final Dio dio = Dio();
+  static final Dio dio = Dio();
+  final TokenService tokenService = TokenService(dio);
 
   @override
   Future<bool> checkUserExists(String email) async {
@@ -91,12 +94,20 @@ class AuthenticationRemoteDataSourceImpl
         'password': password,
         'rememberMe': true,
       });
-      final token = response.data['tokenString'].toString();
+
+      print(response.data);
       final userLastName = response.data['userLName'].toString();
 
-      await prefs.setString(ACCESS_TOKEN, token);
+      // await prefs.setString(ACCESS_TOKEN, token);
       await prefs.setString(USER_LAST_NAME, userLastName);
       await prefs.setString(USER_EMAIL, email);
+
+      final accessToken = response.data['tokenString'].toString();
+      final refreshToken = response.data['refreshToken'].toString();
+      // Parse the JWT to get the expiration time
+      final expiresIn = Helpers.getExpirationFromJwt(accessToken);
+
+      await tokenService.setTokens(accessToken, refreshToken, expiresIn);
     } catch (e) {
       rethrow;
     }
