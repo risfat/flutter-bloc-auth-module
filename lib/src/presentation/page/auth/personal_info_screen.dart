@@ -20,7 +20,6 @@ class PersonalInfoScreen extends StatefulWidget {
 class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
   final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
@@ -28,7 +27,6 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
   @override
   void dispose() {
     _nameController.dispose();
-    _emailController.dispose();
     _phoneController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
@@ -39,18 +37,17 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
   Widget build(BuildContext context) {
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (context, state) {
-        if (state.state == RequestState.error) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message)),
-          );
-        } else if (state.state == RequestState.loaded &&
-            state.isSignupCompleted) {
+        // setState(() {
+        //   _emailController.text = state.email;
+        // });
+
+        if (state.state == RequestState.loaded &&
+            state.isSignupCompleted &&
+            state.isOtpVerified) {
+          // Navigator.pushReplacementNamed(
+          //     context, AppRoutes.DASHBOARD_ROUTE_NAME);
           context.replaceNamed(AppRoutes.DASHBOARD_ROUTE_NAME);
         }
-
-        setState(() {
-          _emailController.text = state.email;
-        });
       },
       builder: (context, state) {
         return Scaffold(
@@ -89,7 +86,7 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
                     const SizedBox(height: 20),
                     _buildNameField(),
                     const SizedBox(height: 2),
-                    _buildEmailField(),
+                    _buildEmailField(state),
                     const SizedBox(height: 10),
                     _buildPhoneField(),
                     const SizedBox(height: 2),
@@ -104,6 +101,7 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
                           child: Text(
                             state.message ?? "An error occurred",
                             style: const TextStyle(color: Colors.red),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       ),
@@ -132,9 +130,9 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
     );
   }
 
-  Widget _buildEmailField() {
+  Widget _buildEmailField(SignInFormState state) {
     return CustomTextFormField(
-      controller: _emailController,
+      controller: TextEditingController(text: state.email),
       labelText: "Email Address",
       hintText: "Enter your email address",
       prefixIcon: const Icon(Icons.mail_outline),

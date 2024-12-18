@@ -1,8 +1,6 @@
 import 'dart:async';
 
-import 'package:animated_flutter_widgets/page_transitions/page_transition_animation.dart';
 import 'package:bloc_clean_architecture/src/common/colors.dart';
-import 'package:bloc_clean_architecture/src/presentation/page/auth/personal_info_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -10,6 +8,7 @@ import 'package:pinput/pinput.dart';
 
 import '../../../common/enums.dart';
 import '../../../common/images.dart';
+import '../../../common/routes.dart';
 import '../../bloc/sign_in_form/sign_in_form_bloc.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
@@ -76,8 +75,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   state.isOtpVerified &&
                   !isNavigated) {
                 isNavigated = true;
-                Navigator.push(context,
-                    SlideLeftPageAnimation(page: PersonalInfoScreen()));
+
+                context.replaceNamed(AppRoutes.PERSONAL_INFO_ROUTE_NAME);
+                // Navigator.push(context,
+                //     SlideLeftPageAnimation(page: PersonalInfoScreen()));
               }
             },
             builder: (context, state) {

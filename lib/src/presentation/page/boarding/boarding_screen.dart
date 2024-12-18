@@ -1,5 +1,6 @@
 import 'package:bloc_clean_architecture/src/common/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../common/colors.dart';
@@ -84,7 +85,7 @@ class _HeaderSection extends StatelessWidget {
               elevation: 3.0, // Elevation to give a slight shadow
             ),
             onPressed: () {
-              context.pushReplacement(AppRoutes.LOGIN_ROUTE_NAME);
+              SystemNavigator.pop();
             },
           ),
         ),

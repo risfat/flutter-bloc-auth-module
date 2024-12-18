@@ -17,11 +17,16 @@ class AuthenticatorWatcherBloc
           emit(const AuthenticatorWatcherState.authenticating());
           final prefs = await SharedPreferences.getInstance();
           final token = prefs.getString(ACCESS_TOKEN);
+          final userLastName = prefs.getString(USER_LAST_NAME);
+          final userEmail = prefs.getString(USER_EMAIL);
           final showOnbording = prefs.getString(ONBOARDING);
+
           if (showOnbording == null) {
             prefs.setString(ONBOARDING, ONBOARDING);
             emit(const AuthenticatorWatcherState.isFirstTime());
-          } else if (token != null) {
+          } else if (token != null &&
+              userLastName != null &&
+              userEmail != null) {
             emit(const AuthenticatorWatcherState.authenticated());
           } else {
             emit(const AuthenticatorWatcherState.unauthenticated());

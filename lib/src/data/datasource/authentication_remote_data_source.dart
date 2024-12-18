@@ -92,7 +92,11 @@ class AuthenticationRemoteDataSourceImpl
         'rememberMe': true,
       });
       final token = response.data['tokenString'].toString();
+      final userLastName = response.data['userLName'].toString();
+
       await prefs.setString(ACCESS_TOKEN, token);
+      await prefs.setString(USER_LAST_NAME, userLastName);
+      await prefs.setString(USER_EMAIL, email);
     } catch (e) {
       rethrow;
     }
@@ -109,7 +113,9 @@ class AuthenticationRemoteDataSourceImpl
         'userLName': lastName,
         'mobile': mobile,
       });
-
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(USER_LAST_NAME, lastName);
+      await prefs.setString(USER_EMAIL, email);
       print(
           "=====================Response Data : ${response.data} ========================");
       // return response.data['success'];

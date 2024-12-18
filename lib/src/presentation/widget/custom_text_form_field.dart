@@ -166,9 +166,11 @@ class CustomTextFormField extends StatelessWidget {
         maxLines: maxLines,
         maxLength: maxLength,
         enabled: enabled,
-        onChanged: (text) => _debouncer.run(() {
-          onChanged!(text);
-        }),
+        onChanged: onChanged != null
+            ? (text) => _debouncer.run(() {
+                  onChanged!(text);
+                })
+            : null,
         textAlign: textAlign ?? TextAlign.left,
         obscureText: obscureText ?? false,
         style: theme.textTheme.bodyMedium,

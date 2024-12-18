@@ -3,6 +3,9 @@
 const String ACCESS_TOKEN = 'access_token';
 const String ONBOARDING = 'onboarding';
 
+const String USER_LAST_NAME = 'user_last_name';
+const String USER_EMAIL = 'user_email';
+
 const double MARGIN = 18;
 const double RADIUS = 20;
 const double SPACE8 = 8;

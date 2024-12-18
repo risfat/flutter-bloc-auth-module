@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../common/colors.dart';
+import '../../../common/constants.dart';
 import '../../../common/images.dart';
 import '../../../common/routes.dart';
 import '../../bloc/authenticator_watcher/authenticator_watcher_bloc.dart';
@@ -32,12 +35,16 @@ class DashboardScreen extends StatelessWidget {
 
   Widget _buildAppBar(BuildContext context) {
     return SliverAppBar(
+      automaticallyImplyLeading: false,
       expandedHeight: 200.0,
+      centerTitle: true,
       floating: false,
       pinned: true,
       backgroundColor: ColorLight.primary.withOpacity(0.05),
       flexibleSpace: FlexibleSpaceBar(
-        title: Text('Dashboard', style: TextStyle(color: Colors.white)),
+        title: Padding(
+            padding: EdgeInsets.only(left: 16.0, right: 16.0),
+            child: Text('Dashboard', style: TextStyle(color: Colors.white))),
         background: Image.asset(
           Images.HEADER_BG,
           fit: BoxFit.cover,
@@ -45,7 +52,7 @@ class DashboardScreen extends StatelessWidget {
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.logout, color: Colors.white),
+          icon: Icon(Icons.logout, color: ColorLight.primary),
           onPressed: () {
             context.read<AuthenticatorWatcherBloc>().add(
                   const AuthenticatorWatcherEvent.signOut(),
@@ -58,6 +65,24 @@ class DashboardScreen extends StatelessWidget {
   }
 
   Widget _buildUserProfile(BuildContext context) {
+    return FutureBuilder<SharedPreferences>(
+      future: SharedPreferences.getInstance(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          final prefs = snapshot.data;
+          final lastName = prefs?.getString(USER_LAST_NAME) ?? 'Doe';
+          final email = prefs?.getString(USER_EMAIL) ?? 'john.doe@example.com';
+
+          return _buildProfileContent(context, lastName, email);
+        } else {
+          return _buildShimmerEffect(context);
+        }
+      },
+    );
+  }
+
+  Widget _buildProfileContent(
+      BuildContext context, String lastName, String email) {
     return Container(
       padding: EdgeInsets.all(16),
       child: Row(
@@ -67,20 +92,61 @@ class DashboardScreen extends StatelessWidget {
             backgroundImage: AssetImage(Images.USER_AVATAR),
           ),
           SizedBox(width: 16),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Welcome, John Doe',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              Text(
-                'john.doe@example.com',
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Welcome, $lastName',
+                  style: Theme.of(context).textTheme.titleLarge,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Text(
+                  email,
+                  style: Theme.of(context).textTheme.titleSmall,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildShimmerEffect(BuildContext context) {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: Container(
+        padding: EdgeInsets.all(16),
+        child: Row(
+          children: [
+            CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.white,
+            ),
+            SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 18,
+                    color: Colors.white,
+                  ),
+                  SizedBox(height: 8),
+                  Container(
+                    width: double.infinity,
+                    height: 14,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

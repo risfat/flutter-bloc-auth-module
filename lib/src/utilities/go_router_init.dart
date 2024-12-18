@@ -1,5 +1,6 @@
 import 'package:bloc_clean_architecture/src/common/routes.dart';
 import 'package:bloc_clean_architecture/src/presentation/page/auth/login_screen.dart';
+import 'package:bloc_clean_architecture/src/presentation/page/auth/personal_info_screen.dart';
 import 'package:bloc_clean_architecture/src/presentation/page/dashboard/dashboard_screen.dart';
 import 'package:bloc_clean_architecture/src/presentation/page/error/error_screen.dart';
 import 'package:bloc_clean_architecture/src/presentation/page/splash/splash_screen.dart';
@@ -56,13 +57,13 @@ GoRouter routerinit = GoRouter(
         );
       },
     ),
-    // GoRoute(
-    //   name: AppRoutes.SIGNUP_ROUTE_NAME,
-    //   path: AppRoutes.SIGNUP_ROUTE_PATH,
-    //   builder: (BuildContext context, GoRouterState state) {
-    //     return const LoginScreen2();
-    //   },
-    // ),
+    GoRoute(
+      name: AppRoutes.PERSONAL_INFO_ROUTE_NAME,
+      path: AppRoutes.PERSONAL_INFO_ROUTE_PATH,
+      builder: (BuildContext context, GoRouterState state) {
+        return const PersonalInfoScreen();
+      },
+    ),
 
     ///  =================================================================
     /// ********************** DashBoard Route ******************************
