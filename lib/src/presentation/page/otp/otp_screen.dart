@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:bloc_clean_architecture/src/common/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
 
+import '../../../common/constants.dart';
 import '../../../common/enums.dart';
 import '../../../common/images.dart';
 import '../../../common/routes.dart';
@@ -228,19 +230,19 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: state.state == RequestState.loading
-            ? null
-            : () {
-                if (_enteredOtp.length == 6) {
-                  context
-                      .read<SignInFormBloc>()
-                      .add(SignInFormEvent.verifyOtp(_enteredOtp));
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("Please enter a valid OTP")),
-                  );
-                }
-              },
+        onPressed: () {
+          if (state.state != RequestState.loading) {
+            if (_enteredOtp.length == 6) {
+              context
+                  .read<SignInFormBloc>()
+                  .add(SignInFormEvent.verifyOtp(_enteredOtp));
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text("Please enter a valid OTP")),
+              );
+            }
+          }
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: ColorLight.primary,
           padding: const EdgeInsets.symmetric(vertical: 15),
@@ -249,12 +251,25 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
           ),
         ),
         child: state.state == RequestState.loading
-            ? const CircularProgressIndicator(color: Colors.white)
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SpinKitThreeBounce(
+                    size: 15,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(width: SPACE12),
+                  Text(
+                    'Loading...',
+                    style: const TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ],
+              )
             : const Text(
                 "Submit",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),

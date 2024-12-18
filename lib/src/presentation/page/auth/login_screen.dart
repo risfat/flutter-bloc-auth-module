@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../common/colors.dart';
+import '../../../common/constants.dart';
 import '../../../common/enums.dart';
 import '../../../common/images.dart';
 import '../../../common/routes.dart';
@@ -298,11 +300,26 @@ class _LoginFormState extends State<_LoginForm> with TickerProviderStateMixin {
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-          onPressed: widget.state.state == RequestState.loading
-              ? null
-              : _onContinuePressed,
+          onPressed: () {
+            if (widget.state.state != RequestState.loading) {
+              _onContinuePressed();
+            }
+          },
           child: widget.state.state == RequestState.loading
-              ? const CircularProgressIndicator(color: Colors.white)
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SpinKitThreeBounce(
+                      size: 15,
+                      color: Colors.white,
+                    ),
+                    const SizedBox(width: SPACE12),
+                    Text(
+                      'Logging in...',
+                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                  ],
+                )
               : Text(
                   _showPasswordField ? "Log In" : "Continue",
                   style: const TextStyle(color: Colors.white, fontSize: 16),
