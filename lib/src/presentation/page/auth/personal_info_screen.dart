@@ -1,11 +1,13 @@
 import 'package:bloc_clean_architecture/src/common/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/phone_number.dart';
 
 import '../../../common/colors.dart';
+import '../../../common/constants.dart';
 import '../../../common/enums.dart';
 import '../../bloc/sign_in_form/sign_in_form_bloc.dart';
 import '../../widget/custom_text_form_field.dart';
@@ -219,28 +221,39 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
             borderRadius: BorderRadius.circular(30),
           ),
         ),
-        onPressed: state.state == RequestState.loading
-            ? null
-            : () {
-                if (_formKey.currentState!.validate()) {
-                  final fullName = _nameController.text.trim();
-                  final nameParts = fullName.split(' ');
-                  final firstName = nameParts.first;
-                  final lastName = nameParts.length > 1
-                      ? nameParts.sublist(1).join(' ')
-                      : '';
+        onPressed: () {
+          if (_formKey.currentState!.validate() &&
+              state.state != RequestState.loading) {
+            final fullName = _nameController.text.trim();
+            final nameParts = fullName.split(' ');
+            final firstName = nameParts.first;
+            final lastName =
+                nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '';
 
-                  context.read<SignInFormBloc>().add(
-                        SignInFormEvent.signUpWithEmail(
-                          firstName,
-                          lastName,
-                          _phoneController.text,
-                        ),
-                      );
-                }
-              },
+            context.read<SignInFormBloc>().add(
+                  SignInFormEvent.signUpWithEmail(
+                    firstName,
+                    lastName,
+                    _phoneController.text,
+                  ),
+                );
+          }
+        },
         child: state.state == RequestState.loading
-            ? const CircularProgressIndicator(color: Colors.white)
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SpinKitThreeBounce(
+                    size: 15,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(width: SPACE12),
+                  Text(
+                    'Please wait...',
+                    style: const TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ],
+              )
             : const Text(
                 "Continue",
                 style: TextStyle(
