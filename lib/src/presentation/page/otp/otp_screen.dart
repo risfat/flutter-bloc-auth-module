@@ -65,47 +65,51 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: BlocConsumer<SignInFormBloc, SignInFormState>(
-            listener: (context, state) {
-              if (state.state == RequestState.error) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(state.message)),
-                );
-              } else if (state.state == RequestState.loaded &&
-                  state.isOtpVerified &&
-                  !isNavigated) {
-                isNavigated = true;
-
-                context.replaceNamed(AppRoutes.PERSONAL_INFO_ROUTE_NAME);
-                // Navigator.push(context,
-                //     SlideLeftPageAnimation(page: PersonalInfoScreen()));
-              }
-            },
-            builder: (context, state) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 20),
-                  _buildBackButton(context),
-                  const SizedBox(height: 20),
-                  _buildImage(),
-                  const SizedBox(height: 20),
-                  _buildTitleAndSubtitle(state),
-                  const SizedBox(height: 30),
-                  _buildOtpInstructions(),
-                  const SizedBox(height: 30),
-                  _buildOtpInput(),
-                  const SizedBox(height: 20),
-                  _buildResendOtpSection(),
-                  const Spacer(),
-                  _buildSubmitButton(state),
-                  const SizedBox(height: 20),
-                ],
-              );
-            },
-          ),
+        child: BlocConsumer<SignInFormBloc, SignInFormState>(
+          listener: (context, state) {
+            if (state.state == RequestState.loaded &&
+                state.isOtpVerified &&
+                !isNavigated) {
+              isNavigated = true;
+              context.replaceNamed(AppRoutes.PERSONAL_INFO_ROUTE_NAME);
+            }
+          },
+          builder: (context, state) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: MediaQuery.of(context).size.height -
+                      MediaQuery.of(context).padding.top -
+                      MediaQuery.of(context).padding.bottom,
+                ),
+                child: IntrinsicHeight(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 20),
+                        _buildBackButton(context),
+                        const SizedBox(height: 20),
+                        _buildImage(),
+                        const SizedBox(height: 20),
+                        _buildTitleAndSubtitle(state),
+                        const SizedBox(height: 30),
+                        _buildOtpInstructions(),
+                        const SizedBox(height: 30),
+                        _buildOtpInput(),
+                        const SizedBox(height: 20),
+                        _buildResendOtpSection(),
+                        const SizedBox(height: 50),
+                        _buildSubmitButton(state),
+                        const SizedBox(height: 20),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
         ),
       ),
     );

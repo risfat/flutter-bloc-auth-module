@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         title: 'flutter bloc auth module',
         theme: themeLight(context),
         darkTheme: themeDark(context),
-        themeMode: ThemeMode.system,
+        themeMode: ThemeMode.light,
         routerConfig: routerinit,
       ),
     );

@@ -63,7 +63,7 @@ class AccountNotFoundDialog extends StatelessWidget {
 
             // Subtitle Text
             const Text(
-              "It looks like there's no account associated with this phone number. Click continue to open a new account.",
+              "It looks like there's no account associated with this email. Click continue to open a new account.",
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.black54,
